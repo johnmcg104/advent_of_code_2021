@@ -24,9 +24,9 @@ def get_sliding_averages(input_data):
 
 input_values = read_input("aoc_1_input.txt")
 
-sequential_increases = get_increases(input_values)
+part_one_increases = get_increases(input_values)
 print("Part One: {}".format(sequential_increases))
 
-sliding_averages = get_sliding_averages(input_values)
-sliding_increases = get_increases(sliding_averages)
+part_two_averages = get_sliding_averages(input_values)
+part_two_increases = get_increases(sliding_averages)
 print("Part Two: {}".format(sliding_increases))
