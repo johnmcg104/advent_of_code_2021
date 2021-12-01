@@ -28,5 +28,5 @@ part_one_increases = get_increases(input_values)
 print("Part One: {}".format(sequential_increases))
 
 part_two_averages = get_sliding_averages(input_values)
-part_two_increases = get_increases(sliding_averages)
-print("Part Two: {}".format(sliding_increases))
+part_two_increases = get_increases(part_two_averages)
+print("Part Two: {}".format(part_two_increases))
