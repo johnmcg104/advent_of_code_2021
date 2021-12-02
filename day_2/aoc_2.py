@@ -11,32 +11,31 @@ def get_end_position(instructions, include_aim=False):
     for instruction in instructions:
         direction = instruction[0]
         amount = int(instruction[1])
-        # If include_aim is True, Up & Down will change the value of current_aim
-        # If include_aim is False, Up & Down will change current_y instead
-        if direction == "up":
-            if include_aim:
-                current_aim -= amount
-            else:
+
+        # Up & Down will only change current_y, Forward & Backward will only change current_x value
+        if include_aim is False:
+            if direction == "up":
                 current_y -= amount
-        if direction == "down":
-            if include_aim:
-                current_aim += amount
-            else:
+            if direction == "down":
                 current_y += amount
-        # If include_aim is True, forward & backward will change current_x, and current_y * current_aim
-        # If include_aim is False, forward & backward will only change current_x value
-        if direction == "forward":
-            if include_aim:
+            if direction == "forward":
+                current_x += amount
+            if direction == "back":
+                current_y += amount
+
+        # include_aim will make Up & Down change the value of current_aim rather than current_y
+        # Forward & Backward will now change current_x and current_y * current_aim
+        if include_aim is True:
+            if direction == "up":
+                current_aim -= amount
+            if direction == "down":
+                current_aim += amount
+            if direction == "forward":
                 current_x += amount
                 current_y += amount * current_aim
-            else:
-                current_x += amount
-        if direction == "back":
-            if include_aim:
+            if direction == "back":
                 current_x -= amount
                 current_y -= amount * current_aim
-            else:
-                current_y += amount
 
     return current_x * current_y
 
