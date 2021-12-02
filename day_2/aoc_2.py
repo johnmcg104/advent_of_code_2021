@@ -12,7 +12,7 @@ def get_end_position(instructions, include_aim=False):
         direction = instruction[0]
         distance = int(instruction[1])
 
-        # Up & Down will only change current_y, Forward & Backward will only change current_x value
+        # Up & Down will only change current_y, Forward will only change current_x value
         if include_aim is False:
             if direction == "up":
                 current_y -= distance
@@ -20,11 +20,9 @@ def get_end_position(instructions, include_aim=False):
                 current_y += distance
             if direction == "forward":
                 current_x += distance
-            if direction == "back":
-                current_y += distance
 
         # include_aim will make Up & Down change the value of current_aim rather than current_y
-        # Forward & Backward will now change current_x and current_y * current_aim
+        # Forward will now change current_x and current_y * current_aim
         if include_aim is True:
             if direction == "up":
                 current_aim -= distance
@@ -33,9 +31,6 @@ def get_end_position(instructions, include_aim=False):
             if direction == "forward":
                 current_x += distance
                 current_y += distance * current_aim
-            if direction == "back":
-                current_x -= distance
-                current_y -= distance * current_aim
 
     return current_x * current_y
 
