@@ -11,7 +11,7 @@ def transpose_data(data):
 def get_gamma_epsilon(data):
     gamma = []
     epsilon = []
-    for index, entry in enumerate(data):
+    for entry in data:
         ones = entry.count('1')
         zeros = entry.count("0")
         if ones > zeros:
